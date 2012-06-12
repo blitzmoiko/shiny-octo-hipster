@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.cityproperties.domain">
+    <class name="MailRecord" table="C_MAIL_RECORD">
+        <id name="mailRecordId" type="int">
+            <column name="M_REC_ID" />
+            <generator class="native" />
+        </id>
+        <many-to-one name="client" class="Client" fetch="select">
+            <column name="CLIENT_ID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="mailType" class="MailType" fetch="select">
+            <column name="M_TYPE_ID" not-null="true" />
+        </many-to-one>
+        <many-to-one name="businessAssociate" class="BusinessAssociate" fetch="select">
+            <column name="BA_ID" not-null="true" />
+        </many-to-one>
+        <property name="comments" type="string">
+            <column name="COMMENTS" />
+        </property>
+        <property name="sentDate" type="timestamp">
+            <column name="SENT_DATE" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

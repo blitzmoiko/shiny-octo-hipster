@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.cityproperties.domain">
+	<class name="BusinessAssociate" table="C_BA">
+		<id name="businessAssociateId" type="int">
+			<column name="BA_ID" />
+			<generator class="native" />
+		</id>
+		<many-to-one name="client" class="Client" fetch="select">
+			<column name="CLIENT_ID" not-null="true" />
+		</many-to-one>
+		<property name="firstName" type="string">
+			<column name="F_NAME" length="32" not-null="true" />
+		</property>
+		<property name="middleName" type="string">
+			<column name="M_NAME" length="32" />
+		</property>
+		<property name="lastName" type="string">
+			<column name="L_NAME" length="32" not-null="true" />
+		</property>
+		<property name="sex" type="string">
+			<column name="SEX" length="1" not-null="true" />
+		</property>
+		<property name="email" type="string">
+			<column name="EMAIL" length="32" not-null="true" />
+		</property>
+		<property name="homePhone" type="string">
+			<column name="HOME_PHONE" length="20" />
+		</property>
+		<property name="workPhone" type="string">
+			<column name="WORK_PHONE" length="32" />
+		</property>
+		<property name="mobilePhone" type="string">
+			<column name="MOBILE_PHONE" length="32" />
+		</property>
+		<property name="birthDate" type="date">
+			<column name="BIRTH_DATE" />
+		</property>
+		<property name="anniversaryDate" type="date">
+			<column name="WEDDING_DATE" />
+		</property>
+		<property name="isSupplier" type="boolean">
+			<column name="IS_SUPPLIER" length="1" not-null="true" />
+		</property>
+	</class>
+</hibernate-mapping>
